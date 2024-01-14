@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="5;url=https://www.example.com">
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
 </head>
 <body>
-    <p>This page will redirect to <a href="https://www.example.com">Example.com</a> in 5 seconds.</p>
+    <h1>Redirecting in <span id="countdown">5</span> seconds</h1>
+    <script>
+        // Function to update the countdown and perform the redirection
+        function updateCountdown() {
+            var countdownElement = document.getElementById('countdown');
+            var countdownValue = parseInt(countdownElement.innerText, 10);
+            
+            if (countdownValue > 0) {
+                countdownValue--;
+                countdownElement.innerText = countdownValue;
+                setTimeout(updateCountdown, 1000); // Update every 1 second
+            } else {
+                // Redirect to the desired URL after countdown
+                window.location.href = 'https://www.example.com'; // Replace with your target URL
+            }
+        }
+
+        // Start the countdown when the page loads
+        window.onload = function() {
+            setTimeout(updateCountdown, 1000); // Start the countdown after 1 second
+        };
+    </script>
 </body>
 </html>
